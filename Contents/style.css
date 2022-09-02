@@ -1,0 +1,39 @@
+.grid {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr 50px 300px;
+    margin: 0%;
+    padding: 0%;
+}
+
+nav {
+    background-color: #ffbfd5;
+}
+
+.menuitem {
+    text-align: center;
+}
+
+.menuitem:hover {
+    transform: scale(1.05);
+}
+
+body {
+    background-color: #fff5f8;
+}
+
+main {
+    grid-row: 1/2;
+    background-color: #fff5f8;
+}
+#gradient {
+    grid-row: 2/3;
+    background-image: linear-gradient(#fff5f8, #ffe0e9)
+}
+
+footer {
+    grid-row: 3/4;
+    background-color: #ffe0e9;
+}
+
+
