@@ -85,6 +85,7 @@ $(document).ready(function () {
             else {
                 wrongAnswer(input);
             }
+            $("#letter").val("");
         }
     }
 
