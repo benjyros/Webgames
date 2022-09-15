@@ -1,11 +1,15 @@
 $(document).ready(function () {
+
+    //attribute section starts
     var words = new Array;
     var wordArray = new Array;
     var previousGuesses = new Array;
     var currentWord;
     var currentClue;
     var wrongAnswerCount;
+    //attribute section ends
 
+    //get json file function starts
     $.getJSON("../Datas/wordlist.json", function (data) {
         for (i = 0; i < data.wordlist.length; i++) {
             words[i] = new Array;
@@ -13,15 +17,19 @@ $(document).ready(function () {
             words[i][1] = data.wordlist[i].clue;
         }
         titleScreen();
-    }) //get json
+    })
+    //get json file function ends
 
+    //display game function starts
     function titleScreen() {
         $("#gameContent").append('<div id="gameTitle">HANGMAN</div><div id="startButton" class="button">BEGIN</div>');
         $("#startButton").on("click", function () {
             gameScreen();
         });
-    } //display game
+    }
+    //display game function starts
 
+    //gamecontent function starts
     function gameScreen() {
         $('#gameContent').empty();
         $('#gameContent').append('<div id="container"><canvas id="hangman" width="180" height="250"></canvas></div>');
@@ -44,16 +52,20 @@ $(document).ready(function () {
         $('#clueholder').append("HINT: " + currentClue);
 
         $('#enterLetter').on("click", onBtnClick);
-    } //gamescreen
+    }
+    //gamecontent function ends
 
+    //get word function starts
     function getWord() {
         var rnd = Math.floor(Math.random() * words.length);
         currentWord = words[rnd][0];
         currentClue = words[rnd][1];
         words.splice(rnd, 1);
         wordArray = currentWord.split("");
-    } //getword
+    }
+    //get word function ends
 
+    //buttonclick function starts
     function onBtnClick() {
         var letter = $("#letter").val();
         $(this).val('');
@@ -88,11 +100,15 @@ $(document).ready(function () {
             $("#letter").val("");
         }
     }
+    //buttonclick function ends
 
+    //check letter function starts
     function checkLetter(letter) {
         return /^[A-Za-z]*$/.test(letter);
     }
+    //check letter function ends
 
+    //check answer function starts
     function checkAnswer() {
         var currentAnswer = "";
         for (i = 0; i < currentWord.length; i++) {
@@ -101,8 +117,10 @@ $(document).ready(function () {
         if (currentAnswer == currentWord) {
             victoryMessage();
         };
-    } //checkanswer
+    }
+    //check anwer function ends
 
+    //add guesses function starts
     function wrongAnswer(a) {
         wrongAnswerCount++;
         $('#guesses').append("  " + a);
@@ -110,8 +128,10 @@ $(document).ready(function () {
         if (wrongAnswerCount == 10) {
             defeatMessage();
         }
-    } //wronganswer
+    }
+    //add guesses function ends
 
+    //draw canvas function starts
     function draw(part) {
         const hangman = document.getElementById('hangman').getContext("2d");
         switch (part) {
@@ -189,7 +209,9 @@ $(document).ready(function () {
                 break;
         }
     }
+    //draw canvas function ends
 
+    //victory function starts
     function victoryMessage() {
         $('#clueholder').empty();
         $('#input').empty();
@@ -202,8 +224,10 @@ $(document).ready(function () {
             }
             else { finalPage() }
         });
-    } //victory 
+    }
+    //victory function ends
 
+    //defeat function starts
     function defeatMessage() {
         $('#clueholder').empty();
         $('#input').empty();
@@ -216,10 +240,13 @@ $(document).ready(function () {
             }
             else { finalPage() }
         });
-    } //defeat 
+    }
+    //defeat function ends
 
+    //end of game function starts
     function finalPage() {
         $('#gameContent').empty();
         $('#gameContent').append('<div id="finalMessage">You have finished all the words in the game!</div>');
-    } //finalpage 
+    }
+    //end of game function ends 
 });
