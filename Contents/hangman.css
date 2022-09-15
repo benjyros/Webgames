@@ -1,7 +1,3 @@
-html {
-    font-family: Montserrat-Regular;
-}
-
 .main {
     text-align: left;
     padding-top: 5%;
@@ -15,7 +11,7 @@ canvas {
 
 input[type=text] {
     color: #737373;
-    background-color: #dbd8d6;
+    background-color: #ffe0e9;
     width: 5%;
     text-align: center;
     margin: 5px;
@@ -45,7 +41,7 @@ input[type=text] {
     margin-bottom: 50px;
     text-align: center;
     font-size: 40px;
-    color: #846855;
+    color: #d6658d;
 }
 
 .button {
@@ -54,14 +50,17 @@ input[type=text] {
     margin: auto;
     cursor: pointer;
     border: solid 1px #737373;
+    background-color: #fff5f8;
     border-radius: 4px;
     text-align: center;
     color: #545454;
     margin-bottom: 50px;
+    transition: 1s;
 }
 
 .button:hover {
-    background-color: #dbd8d6;
+    background-color: #ffe0e9;
+    transition: 0.5s;
 }
 
 #replay {
@@ -95,7 +94,7 @@ input[type=text] {
     margin-top: 50px;
     font-size: 34px;
     text-align: center;
-    color: #846855;
+    color: #d17192;
 }
 
 .tile {
@@ -105,9 +104,9 @@ input[type=text] {
     position: relative;
     left: -50%;
     margin-right: 10px;
-    background-color: #dbd8d6;
+    background-color: #eb8faf;
     text-align: center;
-    color: #737373;
+    color: #fff;
 }
 
 #finalMessage {
