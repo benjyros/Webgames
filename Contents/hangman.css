@@ -7,6 +7,9 @@
 
 canvas {
     text-align: center;
+    border: solid 1px #737373;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 input[type=text] {
@@ -104,6 +107,7 @@ input[type=text] {
     position: relative;
     left: -50%;
     margin-right: 10px;
+    margin-bottom: 10px;
     background-color: #eb8faf;
     text-align: center;
     color: #fff;
@@ -116,4 +120,18 @@ input[type=text] {
     width: 90%;
     margin: auto;
     margin-top: 100px;
+}
+
+/*handy*/
+@media screen and (max-width: 400px) { 
+    .tile {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+    input[type=text] {
+        width: 50px;
+    }
 }

@@ -191,6 +191,9 @@ $(document).ready(function () {
     }
 
     function victoryMessage() {
+        $('#clueholder').empty();
+        $('#input').empty();
+        $('#guesses').empty();
         $('#enterLetter').off("click", onBtnClick);
         $('#feedback').append("CORRECT!<br><br><div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click", function () {
@@ -202,6 +205,9 @@ $(document).ready(function () {
     } //victory 
 
     function defeatMessage() {
+        $('#clueholder').empty();
+        $('#input').empty();
+        $('#guesses').empty();
         $('#enterLetter').off("click", onBtnClick);
         $('#feedback').append("You're Dead!<br>(answer = " + currentWord + ")<div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click", function () {
