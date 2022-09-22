@@ -3,6 +3,7 @@ $(document).ready(function () {
     //attribute section starts
     var words = new Array;
     var wordArray = new Array;
+    var clues = new Array;
     var previousGuesses = new Array;
     var currentWord;
     var currentClue;
@@ -12,25 +13,24 @@ $(document).ready(function () {
     //get json file function starts
     $.getJSON("../Datas/wordlist.json", function (data) {
         for (i = 0; i < data.wordlist.length; i++) {
-            words[i] = new Array;
-            words[i][0] = data.wordlist[i].word;
-            words[i][1] = data.wordlist[i].clue;
+            words[i] = data.wordlist[i].word;
+            clues[i] = data.wordlist[i].clue;
         }
-        titleScreen();
+        startScreen();
     })
     //get json file function ends
 
     //display game function starts
-    function titleScreen() {
+    function startScreen() {
         $("#gameContent").append('<div id="gameTitle">HANGMAN</div><div id="startButton" class="button">BEGIN</div>');
         $("#startButton").on("click", function () {
-            gameScreen();
+            game();
         });
     }
     //display game function starts
 
     //gamecontent function starts
-    function gameScreen() {
+    function game() {
         $('#gameContent').empty();
         $('#gameContent').append('<div id="container"><canvas id="hangman" width="180" height="250"></canvas></div>');
         $('#gameContent').append('<div id="placeholder"></div>');
@@ -58,9 +58,10 @@ $(document).ready(function () {
     //get word function starts
     function getWord() {
         var rnd = Math.floor(Math.random() * words.length);
-        currentWord = words[rnd][0];
-        currentClue = words[rnd][1];
+        currentWord = words[rnd];
+        currentClue = clues[rnd];
         words.splice(rnd, 1);
+        clues.splice(rnd, 1);
         wordArray = currentWord.split("");
     }
     //get word function ends
@@ -88,7 +89,6 @@ $(document).ready(function () {
                     found = true;
                     $('#t' + i).append(input);
                 }
-
             }
 
             if (found) {
@@ -220,9 +220,11 @@ $(document).ready(function () {
         $('#feedback').append("CORRECT!<br><br><div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click", function () {
             if (words.length > 0) {
-                gameScreen()
+                game();
             }
-            else { finalPage() }
+            else { 
+                finalPage();
+            }
         });
     }
     //victory function ends
@@ -236,9 +238,11 @@ $(document).ready(function () {
         $('#feedback').append("You're Dead!<br>(answer = " + currentWord + ")<div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click", function () {
             if (words.length > 0) {
-                gameScreen()
+                game();
             }
-            else { finalPage() }
+            else {
+                finalPage();
+            }
         });
     }
     //defeat function ends

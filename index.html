@@ -2,16 +2,19 @@
 <html lang="en">
 
 <!-- head section starts -->
+
 <head>
     <title>Twäwis-Games - Home</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="Contents/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="Contents/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Contents/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../Contents/style.css">
 </head>
 <!-- head section ends -->
 
 <!-- body section starts -->
+
 <body>
 
     <!-- nav section starts -->
@@ -59,44 +62,11 @@
     <div class="grid">
 
         <!-- main section starts -->
-        <main class="container">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            main
+        <main>
+            <div class="container main">
+                <section id="gameContent">
+                </section>
+            </div>
         </main>
         <!-- main section ends -->
 
@@ -104,20 +74,39 @@
 
         <!-- footer section starts -->
         <footer>
-            footer
+            <div class="container footer footergrid">
+                <button onclick="topFunction()" id="goTopBtn" title="Go to top">&#x21be</button>
+                <div style="margin-top:20px;" id="copyright" class="footercontent">
+                    <p>
+                        <span>&#169;</span> by Twäwis 2022. all rights reserved.<br>made with <i class="fa fa-heart"
+                            style="color:red"></i>.
+                    </p>
+                </div>
+                <div id="links" class="footercontent">
+                    <div id="buttons">
+                        <button class="buttonlink">Benjamin Peterhans <i class="fa fa-github" style="font-size:24px"></i></button>
+                        <br>
+                        <button class="buttonlink">Julian Hartmann <i class="fa fa-github" style="font-size:24px"></i></button>
+                        <br>
+                        <button class="buttonlink">Andrea Materazzo <i class="fa fa-github" style="font-size:24px"></i></button>
+                    </div>
+                </div>
+            </div>
         </footer>
-        <!-- footer section ends -->
+        <!-- main section ends -->
 
     </div>
     <!-- grid section ends -->
 
     <!-- script section starts -->
-    <script src="jQuery/jquery.slim.min.js"></script>
-    <script src="Scripts/Bootstrap/popper.min.js"></script>
-    <script src="Scripts/Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../jQuery/jquery.slim.min.js"></script>
+    <script src="../jQuery/jquery-3.6.1.min.js"></script>
+    <script src="../Scripts/Bootstrap/popper.min.js"></script>
+    <script src="../Scripts/Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/goTopBtn.js"></script>
     <!-- script section ends -->
 
 </body>
-<!-- body section ends -->
+<!-- main section ends -->
 
 </html>

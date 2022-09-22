@@ -2,6 +2,7 @@ html {
     scroll-behavior: smooth;
     position: relative;
     min-height: 100%;
+    background-color: #ffe0e9;
 }
 
 .grid {
@@ -32,6 +33,14 @@ main {
     grid-row: 1/2;
     background-color: #fff5f8;
 }
+
+.main {
+    text-align: left;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-bottom: 20%;
+}
+
 #gradient {
     grid-row: 2/3;
     background-image: linear-gradient(#fff5f8, #ffe0e9)
@@ -40,6 +49,7 @@ main {
 footer {
     grid-row: 3/4;
     background-color: #ffe0e9;
+    bottom: 0;
 }
 
 #goTopBtn {
@@ -62,22 +72,17 @@ footer {
 }
 
 .footer {
-    display: table;
-    clear: both;
+    display: flex;
 }
 
-.footer div {
-    float: left;
+#copyright {
     width: 50%;
+    text-align: left;
 }
 
 #links {
+    width: 50%;
     text-align: right;
-}
-
-#buttons{
-    list-style-type: none;
-    float: right;
 }
 
 .buttonlink {
@@ -97,17 +102,19 @@ footer {
     transition: 0.5s;
 }
 
-@media screen and (max-width: 400px) { 
-    .footer div {
-        float: none;
+@media screen and (max-width: 500px) {
+    .footer {
+        display: block;
+    }
+
+    #copyright{
+        font-size: 12px;
+        text-align: center;
         width: 100%;
     }
 
-    .footer {
-        text-align: center;
-    }
-
-    #links {
+    #links{
+        width: 100%;
         text-align: center;
     }
 
