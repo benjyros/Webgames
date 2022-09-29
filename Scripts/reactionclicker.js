@@ -24,7 +24,7 @@ function game() {
         "<div id='start'><div><img src='../Images/thunder.png' alt='' class='images'><h1 class='gameText'>reaction time test</h1><h1 class='gameUnderText h5'>When it turns red, click as quickly as you can.</h1><h1 class='gameUnderText h5'>click anywhere to begin</h1></div></div>"
     );
 
-    $("#start").mousedown(function () {
+    $("#start").click(function () {
         waitForGreen();
     });
 }
@@ -41,7 +41,7 @@ function waitForGreen() {
 
     cancelTurnGreen = setTimeout(turnGreen, rndTime);
 
-    $("#waitForGreen").mousedown(function () {
+    $("#waitForGreen").click(function () {
         clearTimeout(cancelTurnGreen);
         clickedTooEarly();
     });
@@ -54,7 +54,7 @@ function clickedTooEarly() {
         "<div id='clickedTooEarly'><div><h1 class='gameText'>too soon !</h1><h1 class='gameUnderText h5'>click to try again.</h1></div></div>"
     );
 
-    $("#clickedTooEarly").mousedown(function () {
+    $("#clickedTooEarly").click(function () {
         waitForGreen();
     });
 }
@@ -70,7 +70,7 @@ function turnGreen() {
 
     countDownTimer = new Date();
 
-    $("#turnGreen").mousedown(function () {
+    $("#turnGreen").click(function () {
         if (amountOfTries < 5) {
             onGreenClick();
         } else {
@@ -95,7 +95,7 @@ function onGreenClick() {
         "<div id='onGreenClick'><div><h1 class='gameText'>" + result + " ms</h1><h1 class='gameUnderText h5'>click to keep going.</h1></div></div>"
     );
 
-    $("#onGreenClick").mousedown(function () {
+    $("#onGreenClick").click(function () {
         waitForGreen();
     });
 }
@@ -116,7 +116,7 @@ function resultScreen() {
         " ms</h1><div class='line'></div><h1 class='gameUnderText h5'>click to try again.</h1></div></div>"
     );
 
-    $("#resultScreen").mousedown(function () {
+    $("#resultScreen").click(function () {
         amountOfTries = 0;
         results = [];
         total = 0;
