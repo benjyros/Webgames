@@ -98,15 +98,15 @@ footer {
     background-color: #fff5f8;
     border-radius: 4px;
     color: #545454;
-    transition: 1s;
+    transition: 0.1s;
     margin-bottom: 10px;
     width: 180px;
     text-align: right;
 }
 
 .buttonlink:hover {
-    background-color: #ffe0e9;
-    transition: 0.5s;
+    transform: scale(1.02);
+    transition: 0.05s;
 }
 
 @media screen and (max-width: 500px) {
