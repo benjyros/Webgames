@@ -1,18 +1,11 @@
-body {
-    background-color: blanchedalmond;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #gameContent {
+    margin: auto;
     width: 500px;
     height: 500px;
-    border: 2px solid wheat;
-    background-color: white;
-    margin: 0 auto;
-    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: solid 1px #737373;
+    border-radius: 5px;
 }
 
 .gameText {
@@ -87,7 +80,7 @@ body {
 .line {
     width: 200px;
     height: 1px;
-    border: 1px solid #647be1;
+    border: 1px solid White;
     margin-bottom: 10px;
 }
 
@@ -104,4 +97,13 @@ body {
     100% {
         transform: scale(1);
     }
+}
+
+/*phone*/
+@media screen and (max-width: 615px) { 
+    #gameContent {
+        width: 100%;
+    }
+
+
 }
