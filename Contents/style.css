@@ -13,6 +13,13 @@ html {
     padding: 0%;
 }
 
+nav, main {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 nav {
     background-color: #ffbfd5;
 }

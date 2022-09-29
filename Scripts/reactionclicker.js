@@ -12,7 +12,7 @@ function startScreen() {
     $("#gameContent").empty();
     $("#gameContent").css("background-color", "#eb8faf");
     $("#gameContent").append(
-        "<div id='startScreen'><div><img src='../Images/reactionclicker.png' alt='' class='images'><h1 class='gameText'>reaction time test</h1><h1 class='gameUnderText h5'>When it turns red, click as quickly as you can.</h1><h1 class='gameUnderText h5'>click anywhere to begin</h1></div></div>"
+        "<div id='startScreen'><div><img src='../Images/thunder.png' alt='' class='images'><h1 class='gameText'>reaction time test</h1><h1 class='gameUnderText h5'>When it turns red, click as quickly as you can.</h1><h1 class='gameUnderText h5'>click anywhere to begin</h1></div></div>"
     );
 
     $("#startScreen").mousedown(function () {
