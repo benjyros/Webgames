@@ -57,6 +57,13 @@ table img {
     transition: 1s;
 }
 
+#feedback {
+    margin-top: 50px;
+    font-size: 34px;
+    text-align: center;
+    color: #d17192;
+}
+
 /*Adjusting for mobile*/
 
 @media screen and (max-width: 650px) {

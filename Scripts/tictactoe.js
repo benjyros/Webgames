@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    var rowX = new Array();
-    var rowO = new Array();
-    var columnX = new Array();
-    var columnO = new Array();
-    var diagonalX = new Array();
-    var diagonalO = new Array();
-    var opDiagonalX = new Array();
-    var opDiagonalO = new Array();
+    var rowX = [0, 0, 0];
+    var rowO = [0, 0, 0];
+    var columnX = [0, 0, 0];
+    var columnO = [0, 0, 0];
+    var diagonalX = [0, 0, 0];
+    var diagonalO = [0, 0, 0];
+    var opDiagonalX = [0, 0, 0];
+    var opDiagonalO = [0, 0, 0];
 
-    startScreen();
+    var count = 0;
 
     function startScreen() {
         $("#gameContent").append('<div id="gameTitle">TIC TAC TOE</div><div id="startButton" class="button">BEGIN</div>');
@@ -26,691 +26,119 @@ $(document).ready(function () {
                 $('#tr_' + i).append('<td id="td_' + j + '"></td>');
             }
         }
+        $('#gameContent').append('<div id="feedback"></div>');
 
         $('td').on("click", onTileClick)
-        /*
-
-        $('#enterLetter').on("click", onBtnClick);
-        */
     }
 
     function onTileClick(e) {
-        if (!won) {
-            if ($(this).is(":empty")) {
-                var column = $(this).attr('id').split('_')[1];
-                var row = (e.target.parentNode.id).split('_')[1];
-                alert(row + ", " + column);
-                count++;
-                if (count % 2 == 0) {
-                    $(this).append('<img class="x" src="../Images/x.png" />');
+        if ($(this).is(":empty")) {
+            var column = parseInt($(this).attr('id').split('_')[1]);
+            var row = parseInt((e.target.parentNode.id).split('_')[1]);
+            count++;
+            if (count % 2 == 0) {
+                $(this).append('<img class="x" src="../Images/x.png" />');
 
-                    rowX[row] += 1;
-                    columnX[column] += 1;
+                rowX[row] += 1;
+                columnX[column] += 1;
 
-                    if(row == column){
-                        diagonalX[row] += 1;
-                    }
-                    if(row + column + 1 == 3){
-                        opDiagonalX[row] += 1
-                    }
+                if (row == column) {
+                    diagonalX[row] += 1;
                 }
-                else {
-                    $(this).append('<img class="circle" src="../Images/circle.png" />');
+                if (row + column + 1 == 3) {
+                    opDiagonalX[row] += 1;
+                }
+                checkWinX(row, column);
+            }
+            else {
+                $(this).append('<img class="circle" src="../Images/circle.png" />');
 
-                    rowO[row] += 1;
-                    columnO[column] += 1;
-                    
-                    if(row == column){
-                        diagonalO[row] += 1;
-                    }
-                    if(row + column + 1 == 3){
-                        opDiagonalO[row] += 1
-                    }
+                rowO[row] += 1;
+                columnO[column] += 1;
+
+                if (row == column) {
+                    diagonalO[row] += 1;
+                }
+                if (row + column + 1 == 3) {
+                    opDiagonalO[row] += 1;
+                }
+                checkWinO(row, column);
+            }
+        }
+    }
+
+    function checkWinX(row, column) {
+        var sumDiagonal = 0;
+        var sumOpDiagonal = 0;
+
+        for (var i = 0; i < diagonalX.length; i++) {
+            sumDiagonal += diagonalX[i];
+            sumOpDiagonal += opDiagonalX[i];
+        }
+
+        if (rowX[row] == 3 || columnX[column] == 3 || sumDiagonal == 3 || sumOpDiagonal == 3) {
+            finalMessage("X", false);
+        }
+        else if(getCheckDraw()){
+            finalMessage("", true);
+        }
+    }
+
+    function checkWinO(row, column) {
+        var sumDiagonal = 0;
+        var sumOpDiagonal = 0;
+
+        for (var i = 0; i < diagonalO.length; i++) {
+            sumDiagonal += diagonalO[i];
+            sumOpDiagonal += opDiagonalO[i];
+        }
+
+        if (rowO[row] == 3 || columnO[column] == 3 || sumDiagonal == 3 || sumOpDiagonal == 3) {
+            finalMessage("O", false);
+        }
+        else if(getCheckDraw()){
+            finalMessage("", true);
+        }
+    }
+
+    function getCheckDraw(){
+        var ret = true;
+        for(var i = 0; i < 3; i++){
+            for(var j = 0; j < 3; j++){
+                if($('#tr_' + i + ' #td_' + j).is(":empty")){
+                    return false;
                 }
             }
         }
-
-        
-
-        $('td').off("click", onRowClick)
+        return true;
     }
 
-    var count = 0;
-    let won = false;
-
-    $("td").click(function () {
-        //changing between
-
-        if (
-            //fields with circle
-            $("#field1").has(".circle").length &&
-            $("#field2").has(".circle").length &&
-            $("#field3").has(".circle").length
-        ) {
-            $("#field1").css("background-color", "green");
-            $("#field2").css("background-color", "green");
-            $("#field3").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-
-        } else if (
-            $("#field4").has(".circle").length &&
-            $("#field5").has(".circle").length &&
-            $("#field6").has(".circle").length
-        ) {
-            $("#field4").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field6").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field7").has(".circle").length &&
-            $("#field8").has(".circle").length &&
-            $("#field9").has(".circle").length
-        ) {
-            $("#field7").css("background-color", "green");
-            $("#field8").css("background-color", "green");
-            $("#field9").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field1").has(".circle").length &&
-            $("#field4").has(".circle").length &&
-            $("#field7").has(".circle").length
-        ) {
-            $("#field1").css("background-color", "green");
-            $("#field4").css("background-color", "green");
-            $("#field7").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field2").has(".circle").length &&
-            $("#field5").has(".circle").length &&
-            $("#field8").has(".circle").length
-        ) {
-            $("#field2").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field8").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field3").has(".circle").length &&
-            $("#field6").has(".circle").length &&
-            $("#field9").has(".circle").length
-        ) {
-            $("#field3").css("background-color", "green");
-            $("#field6").css("background-color", "green");
-            $("#field9").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field1").has(".circle").length &&
-            $("#field5").has(".circle").length &&
-            $("#field9").has(".circle").length
-        ) {
-            $("#field1").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field9").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field7").has(".circle").length &&
-            $("#field5").has(".circle").length &&
-            $("#field3").has(".circle").length
-        ) {
-            $("#field7").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field3").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>Circle won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            //fields with x
-            $("#field1").has(".x").length &&
-            $("#field2").has(".x").length &&
-            $("#field3").has(".x").length
-        ) {
-            $("#field1").css("background-color", "green");
-            $("#field2").css("background-color", "green");
-            $("#field3").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field4").has(".x").length &&
-            $("#field5").has(".x").length &&
-            $("#field6").has(".x").length
-        ) {
-            $("#field4").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field6").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field7").has(".x").length &&
-            $("#field8").has(".x").length &&
-            $("#field9").has(".x").length
-        ) {
-            $("#field7").css("background-color", "green");
-            $("#field8").css("background-color", "green");
-            $("#field9").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field1").has(".x").length &&
-            $("#field5").has(".x").length &&
-            $("#field9").has(".x").length
-        ) {
-            $("#field1").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field9").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field3").has(".x").length &&
-            $("#field5").has(".x").length &&
-            $("#field7").has(".x").length
-        ) {
-            $("#field3").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field7").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field1").has(".x").length &&
-            $("#field4").has(".x").length &&
-            $("#field7").has(".x").length
-        ) {
-            $("#field1").css("background-color", "green");
-            $("#field4").css("background-color", "green");
-            $("#field7").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field2").has(".x").length &&
-            $("#field5").has(".x").length &&
-            $("#field8").has(".x").length
-        ) {
-            $("#field2").css("background-color", "green");
-            $("#field5").css("background-color", "green");
-            $("#field8").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field3").has(".x").length &&
-            $("#field6").has(".x").length &&
-            $("#field9").has(".x").length
-        ) {
-            $("#field3").css("background-color", "green");
-            $("#field6").css("background-color", "green");
-            $("#field9").css("background-color", "green");
-
-            won = true;
-
-            $(".inner-container")
-                .children()
-                .css({ opacity: 0.6 })
-                .end()
-                .css({ opacity: 0.6 });
-
-            $("<div id='wonDisplay'><p>X won<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#wonDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
-        } else if (
-            $("#field1").has("img").length &&
-            $("#field2").has("img").length &&
-            $("#field3").has("img").length &&
-            $("#field4").has("img").length &&
-            $("#field5").has("img").length &&
-            $("#field6").has("img").length &&
-            $("#field7").has("img").length &&
-            $("#field8").has("img").length &&
-            $("#field9").has("img").length
-        ) {
-            $(
-                "#field1, #field2, #field3, #field4, #field5, #field6, #field7, #field8, #field9"
-            ).css("background-color", "pink");
-
-            $("<div id='drawDisplay'><p>It's a draw !<p></div>")
-                .css({
-                    position: "absolute",
-                    width: "60%",
-                    height: "35%",
-                    background: "grey",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "3px solid black",
-                })
-                .appendTo($("#gameContent").css("position", "relative"));
-
-            $("<button type='button' class='btn btn-dark restartBtn smol'>Restart</button>").appendTo(
-                $("#drawDisplay")
-            );
-
-            $(".restartBtn").click(function () {
-                location.reload(true);
-            });
+    function finalMessage(player, draw) {
+        setNewVariables();
+        $('td').off("click", onTileClick);
+        if(draw){
+            $('#feedback').append("It's a draw!<br><br><div id='replay' class='button'>RESTART</div>");
         }
-    });
+        else{
+            $('#feedback').append("Player " + player + " has won!<br><br><div id='replay' class='button'>RESTART</div>");
+        }
+        $('#replay').on("click", function () {
+            game();
+        });
+    }
+
+    function setNewVariables() {
+        rowX = [0, 0, 0];
+        rowO = [0, 0, 0];
+        columnX = [0, 0, 0];
+        columnO = [0, 0, 0];
+        diagonalX = [0, 0, 0];
+        diagonalO = [0, 0, 0];
+        opDiagonalX = [0, 0, 0];
+        opDiagonalO = [0, 0, 0];
+    }
+
+    startScreen();
+
+    /*Im sorry for your 640 lines of code, which has been modified to a better version*/
 });
