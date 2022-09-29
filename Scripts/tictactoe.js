@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     var rowX = [0, 0, 0];
     var rowO = [0, 0, 0];
     var columnX = [0, 0, 0];
