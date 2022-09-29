@@ -2,6 +2,10 @@
     margin: auto;
     width: 500px;
     height: 500px;
+}
+
+#game {
+    height: 100%;
     position: relative;
     overflow: hidden;
     border: solid 1px #737373;
@@ -27,47 +31,7 @@
     animation: pulse 2s ease infinite;
 }
 
-#startScreen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#waitForGreen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#turnGreen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#onGreenClick {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#clickedTooEarly {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#resultScreen {
+#game > * {
     width: 100%;
     height: 100%;
     display: flex;
@@ -80,6 +44,33 @@
     height: 1px;
     border: 1px solid White;
     margin-bottom: 10px;
+}
+
+#gameTitle {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 40px;
+    color: #d6658d;
+}
+
+.button {
+    font-size: 17px;
+    width: 100px;
+    margin: auto;
+    cursor: pointer;
+    border: solid 1px #737373;
+    background-color: #fff5f8;
+    border-radius: 4px;
+    text-align: center;
+    color: #545454;
+    margin-bottom: 50px;
+    transition: 1s;
+}
+
+.button:hover {
+    background-color: #ffe0e9;
+    transition: 0.5s;
 }
 
 /* Creating th heartbeat effect */

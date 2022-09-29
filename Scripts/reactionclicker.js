@@ -10,12 +10,21 @@ startScreen();
 
 function startScreen() {
     $("#gameContent").empty();
+    $("#gameContent").append('<div id="gameTitle">REACTIONCLICKER</div><div id="startButton" class="button">BEGIN</div>');
+    $("#startButton").on("click", function () {
+        game();
+    });
+}
+
+function game() {
+    $("#gameContent").empty();
     $("#gameContent").css("background-color", "#eb8faf");
-    $("#gameContent").append(
-        "<div id='startScreen'><div><img src='../Images/thunder.png' alt='' class='images'><h1 class='gameText'>reaction time test</h1><h1 class='gameUnderText h5'>When it turns red, click as quickly as you can.</h1><h1 class='gameUnderText h5'>click anywhere to begin</h1></div></div>"
+    $("#gameContent").append('<div id="game"></div>');
+    $("#game").append(
+        "<div id='start'><div><img src='../Images/thunder.png' alt='' class='images'><h1 class='gameText'>reaction time test</h1><h1 class='gameUnderText h5'>When it turns red, click as quickly as you can.</h1><h1 class='gameUnderText h5'>click anywhere to begin</h1></div></div>"
     );
 
-    $("#startScreen").mousedown(function () {
+    $("#start").mousedown(function () {
         waitForGreen();
     });
 }
@@ -24,9 +33,9 @@ function waitForGreen() {
     var rndTime = Math.floor((Math.random() * 5000) + 1500);
     //console.log(rndTime)
 
-    $("#gameContent").empty();
+    $("#game").empty();
     $("#gameContent").css("background-color", "#ff6363");
-    $("#gameContent").append(
+    $("#game").append(
         "<div id='waitForGreen'><div><h1 class='gameText'>wait for green...</h1></div></div>"
     );
 
@@ -39,9 +48,9 @@ function waitForGreen() {
 }
 
 function clickedTooEarly() {
-    $("#gameContent").empty();
+    $("#game").empty();
     $("#gameContent").css("background-color", "#eb8faf");
-    $("#gameContent").append(
+    $("#game").append(
         "<div id='clickedTooEarly'><div><h1 class='gameText'>too soon !</h1><h1 class='gameUnderText h5'>click to try again.</h1></div></div>"
     );
 
@@ -53,9 +62,9 @@ function clickedTooEarly() {
 function turnGreen() {
     amountOfTries++;
 
-    $("#gameContent").empty();
+    $("#game").empty();
     $("#gameContent").css("background-color", "#8cff8c");
-    $("#gameContent").append(
+    $("#game").append(
         "<div id='turnGreen'><div><h1 class='gameText'>click !</h1></div></div>"
     );
 
@@ -80,9 +89,9 @@ function getResults() {
 function onGreenClick() {
     getResults()
 
-    $("#gameContent").empty();
+    $("#game").empty();
     $("#gameContent").css("background-color", "#eb8faf");
-    $("#gameContent").append(
+    $("#game").append(
         "<div id='onGreenClick'><div><h1 class='gameText'>" + result + " ms</h1><h1 class='gameUnderText h5'>click to keep going.</h1></div></div>"
     );
 
@@ -99,9 +108,9 @@ function resultScreen() {
         count++;
     });
 
-    $("#gameContent").empty();
+    $("#game").empty();
     $("#gameContent").css("background-color", "#f5ac6c");
-    $("#gameContent").append(
+    $("#game").append(
         "<div id='resultScreen'><div><h1 class='gameUnderText h5'>your average was</h1><h1 class='gameText'>" +
         total / count +
         " ms</h1><div class='line'></div><h1 class='gameUnderText h5'>click to try again.</h1></div></div>"
@@ -113,6 +122,6 @@ function resultScreen() {
         total = 0;
         count = 0;
 
-        startScreen();
+        game();
     });
 }

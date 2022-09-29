@@ -1,27 +1,22 @@
 #gameContent {
+    text-align: center;
+    margin: 0 auto;
     width: 500px;
     height: 500px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
-#startScreen {
-    width: 100%;
+#game {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    border: solid 1px #737373;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 5%;
 }
 
-#play {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#end {
+#game > * {
     width: 100%;
     height: 100%;
     display: flex;
@@ -33,14 +28,28 @@
     padding: 35px;
 }
 
-.btn {
-    background-color: #b05bec;
-    color: white;
-    border: 1px solid #B82DFB;
+#gameTitle {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 40px;
+    color: #d6658d;
 }
 
-.btn:hover {
-    color: white;
-    background-color: #912acc;
-    border: 1px solid #a42ce1;
+.button {
+    font-size: 17px;
+    width: 100px;
+    margin: auto;
+    cursor: pointer;
+    border: solid 1px #737373;
+    background-color: #fff5f8;
+    border-radius: 4px;
+    text-align: center;
+    color: #545454;
+    transition: 1s;
+}
+
+.button:hover {
+    background-color: #ffe0e9;
+    transition: 0.5s;
 }
