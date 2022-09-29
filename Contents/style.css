@@ -109,7 +109,7 @@ footer {
     transition: 0.05s;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 615px) {
     .footer {
         display: block;
     }

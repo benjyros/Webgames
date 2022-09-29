@@ -115,7 +115,7 @@ input[type=text] {
 }
 
 /*handy*/
-@media screen and (max-width: 400px) { 
+@media screen and (max-width: 615px) { 
     .tile {
         width: 20px;
         height: 20px;
