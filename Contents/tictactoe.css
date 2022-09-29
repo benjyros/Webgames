@@ -1,3 +1,7 @@
+#gameContent{
+    padding-top: 5%;
+}
+
 #gameContent table {
     margin: 0 auto;
     border: 2px solid black;
@@ -17,22 +21,6 @@
 
 table img {
     width: 64px;
-}
-
-.inner-container {
-    position: relative;
-}
-
-#wonDisplay {
-    border-radius: 10px;
-    text-align: center;
-    padding: 10%;
-}
-
-#drawDisplay {
-    border-radius: 10px;
-    text-align: center;
-    padding: 10%;
 }
 
 #gameTitle {
@@ -66,25 +54,17 @@ table img {
 
 /*Adjusting for mobile*/
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 500px) {
     #gameContent {
-        width: 300px;
-        height: 300px;
+        padding-top: 10%;
     }
-
+    
     #gameContent table {
+        width: 300px;
         height: 300px;
     }
 
     table img {
         width: 32px;
-    }
-
-    #wonDisplay {
-        padding: 3%;
-    }
-
-    #drawDisplay {
-        padding: 3%;
     }
 }

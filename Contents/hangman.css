@@ -29,7 +29,6 @@ input[type=text] {
     margin: auto;
     position: relative;
     overflow: hidden;
-    margin-bottom: 10%;
 }
 
 #gameTitle {
@@ -127,6 +126,4 @@ input[type=text] {
     input[type=text] {
         width: 50px;
     }
-
-
 }
