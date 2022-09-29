@@ -1,58 +1,70 @@
-.game {
-    width: 40%;
-    height: 70vh;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
+#gameContent{
+    padding-top: 5%;
 }
 
-.col {
+#gameContent table {
+    margin: 0 auto;
     border: 2px solid black;
-    padding: 10%;
-    border-left: none;
-    border-top: none;
+    table-layout: fixed;
+    width: 500px;
+    height: 500px;
+    table-layout: fixed;
+    text-align: center;
+    box-shadow: 10px 5px 60px grey;
+}
+
+#gameContent td {
+    border: 2px solid black;
+    height: 33.3%;
+    width: 33.3%;
+}
+
+table img {
+    width: 64px;
+}
+
+#gameTitle {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 40px;
+    color: #d6658d;
+}
+
+.button {
+    font-size: 17px;
+    width: 100px;
+    margin: auto;
+    cursor: pointer;
+    border: solid 1px #737373;
+    background-color: #fff5f8;
+    border-radius: 4px;
+    text-align: center;
+    color: #545454;
+    margin-bottom: 50px;
+    transition: 1s;
+}
+
+#feedback {
+    margin-top: 50px;
+    font-size: 34px;
+    text-align: center;
+    color: #d17192;
+}
+
+/*Adjusting for mobile*/
+
+@media screen and (max-width: 500px) {
+    #gameContent {
+        padding-top: 10%;
+    }
     
+    #gameContent table {
+        width: 300px;
+        height: 300px;
+    }
+
+    table img {
+        width: 32px;
+    }
 }
-
-.gridtictactoe {
-    text-align: center;
-    display: grid;
-    height: 400px;
-    width: 400px;
-    grid-template-columns: auto auto auto;
-    margin: 0 auto;
-}
-
-.grid-itemCorner {
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-.grid-itemMidSide1 {
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-.grid-itemMidSide2 {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-.grid-itemMid {
-    border: 1px solid black;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-
-
-
-

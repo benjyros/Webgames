@@ -1,9 +1,7 @@
 #gameContent {
-    text-align: center;
-    margin: 0 auto;
+    margin: auto;
     width: 500px;
     height: 500px;
-    border-radius: 5px;
 }
 
 #game {
@@ -12,8 +10,25 @@
     overflow: hidden;
     border: solid 1px #737373;
     border-radius: 5px;
+}
+
+.gameText {
     color: white;
-    margin-bottom: 5%;
+    text-align: center;
+}
+
+.gameUnderText {
+    color: white;
+    text-align: center;
+}
+
+.images {
+    width: 64px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    animation: pulse 2s ease infinite;
 }
 
 #game > * {
@@ -24,8 +39,11 @@
     align-items: center;
 }
 
-#finishFlag {
-    padding: 35px;
+.line {
+    width: 200px;
+    height: 1px;
+    border: 1px solid White;
+    margin-bottom: 10px;
 }
 
 #gameTitle {
@@ -46,10 +64,34 @@
     border-radius: 4px;
     text-align: center;
     color: #545454;
+    margin-bottom: 50px;
     transition: 1s;
 }
 
 .button:hover {
     background-color: #ffe0e9;
     transition: 0.5s;
+}
+
+/* Creating th heartbeat effect */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*phone*/
+@media screen and (max-width: 500px) { 
+    #gameContent {
+        width: 300px;
+        height: 300px;
+    }
 }

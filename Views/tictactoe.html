@@ -1,40 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
+<!-- head section starts -->
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="../Contents/bootstrap.min.css" rel="stylesheet">
-  <!-- <link href="../Contents/style.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="../Contents/tictactoe.css">
+    <title>Twäwis-Games - TicTacToe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../Contents/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../Contents/style.css">
+    <link rel="stylesheet" href="../Contents/tictactoe.css">
 </head>
+<!-- head section ends -->
+
+<!-- body section starts -->
 
 <body>
-  <div class="grid">
-    <nav>
-      <h1>Hallo</h1>
+
+    <!-- nav section starts -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <a class="navbar-brand menuitem" href="../index.html">Twäwis-Games</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="tictactoe.html" class="nav-link text-white menuitem">
+                        <img src="../Images/tictactoe.png" alt="TicTacToe Icon" width="27px">
+                        <br>
+                        TicTacToe
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="hangman.html" class="nav-link text-white menuitem">
+                        <img src="../Images/hangman.png" alt="Hangman Icon" width="25px">
+                        <br>
+                        Hangman
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="speedclicker.html" class="nav-link text-white menuitem">
+                        <img src="../Images/speedclicker.png" alt="Speedclicker Icon" width="25px">
+                        <br>
+                        Speedclicker
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reactionclicker.html" class="nav-link text-white menuitem">
+                        <img src="../Images/reactionclicker.png" alt="Reactionclicker Icon" width="25px">
+                        <br>
+                        Reactionclicker
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
-    <main>
-      <div class="gridtictactoe">
-        <div class="grid-itemCorner">1</div>
-        <div class="grid-itemMidSide1">2</div>
-        <div class="grid-itemCorner">3</div>  
-        <div class="grid-itemMidSide2">4</div>
-        <div class="grid-itemMid">5</div>
-        <div class="grid-itemMidSide2">6</div>  
-        <div class="grid-itemCorner">7</div>
-        <div class="grid-itemMidSide1">8</div>
-        <div class="grid-itemCorner">9</div>  
+    <!-- nav section ends -->
+
+    <!-- grid section starts -->
+    <div class="grid">
+
+        <!-- main section starts -->
+        <main>
+            <div class="container main">
+                <section id="gameContent">
+                </section>
+            </div>
+        </main>
+        <!-- main section ends -->
+
+        <div id="gradient"></div>
+
+        <!-- footer section starts -->
+        <footer>
+            <div class="container footer footergrid">
+                <button onclick="topFunction()" id="goTopBtn" title="Go to top">&#x21be</button>
+                <div style="margin-top:20px;" id="copyright" class="footercontent">
+                    <p>
+                        <span>&#169;</span> by Twäwis 2022. all rights reserved.<br>made with <i class="fa fa-heart"
+                            style="color:red"></i>.
+                    </p>
+                </div>
+                <div id="links" class="footercontent">
+                    <div id="buttons">
+                        <button class="buttonlink">Benjamin Peterhans <i class="fa fa-github" style="font-size:24px"></i></button>
+                        <br>
+                        <button class="buttonlink">Julian Hartmann <i class="fa fa-github" style="font-size:24px"></i></button>
+                        <br>
+                        <button class="buttonlink">Andrea Materazzo <i class="fa fa-github" style="font-size:24px"></i></button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main section ends -->
+
     </div>
-    </main>
-    <footer>
-      <p>footer</p>
-    </footer>
-  </div>
-  <script src="../Scripts/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="../Scripts/index.js" crossorigin="anonymous"></script>
-  <script src="../Scripts/tictactoe.js"></script>
+    <!-- grid section ends -->
+
+    <!-- script section starts -->
+    <script src="../Scripts/jQuery/jquery-3.6.1.min.js"></script>
+    <script src="../Scripts/Popper/popper.min.js"></script>
+    <script src="../Scripts/Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/goTopBtn.js"></script>
+    <script src="../Scripts/tictactoe.js"></script>
+    <!-- script section ends -->
+
 </body>
+<!-- main section ends -->
 
 </html>
