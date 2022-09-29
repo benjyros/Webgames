@@ -1,0 +1,107 @@
+body {
+    background-color: blanchedalmond;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameContent {
+    width: 500px;
+    height: 500px;
+    border: 2px solid wheat;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.gameText {
+    color: white;
+    text-align: center;
+    user-select: none;
+}
+
+.gameUnderText {
+    color: white;
+    text-align: center;
+    user-select: none;
+}
+
+.images {
+    width: 64px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    animation: pulse 2s ease infinite;
+}
+
+#startScreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#waitForGreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#turnGreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#onGreenClick {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clickedTooEarly {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#resultScreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    width: 200px;
+    height: 1px;
+    border: 1px solid #647be1;
+    margin-bottom: 10px;
+}
+
+/* Creating th heartbeat effect */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
