@@ -1,0 +1,46 @@
+#gameContent {
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+#startScreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+#play {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#end {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#finishFlag {
+    padding: 35px;
+}
+
+.btn {
+    background-color: #b05bec;
+    color: white;
+    border: 1px solid #B82DFB;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #912acc;
+    border: 1px solid #a42ce1;
+}
