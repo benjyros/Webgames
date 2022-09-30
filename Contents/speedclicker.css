@@ -3,7 +3,7 @@
     margin: auto;
     width: 500px;
     height: 500px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #game, #start {
@@ -11,7 +11,7 @@
     position: relative;
     overflow: hidden;
     border: solid 1px #737373;
-    border-radius: 5px;
+    border-radius: 10px;
     color: white;
     margin-bottom: 5%;
     justify-content: center;
