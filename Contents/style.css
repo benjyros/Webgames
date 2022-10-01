@@ -45,7 +45,7 @@ main {
     text-align: left;
     padding-top: 5%;
     padding-bottom: 5%;
-    margin-bottom: 20%;
+    min-height: 100vh;
 }
 
 #gradient {
