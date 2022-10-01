@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     function buildGameSection(){
         $(".main").append('<div id="gamesection"></div>');
-        $("#gamesection").append('<h1>Täwis-Games</h1><hr>');
+        $("#gamesection").append('<h1>Twäwis-Games</h1><hr>');
         $("#gamesection").append('<section id="section" class="row">');
 
         for(var i = 0; i < gametitle.length; i++){
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     function buildDemoSection(){
         $(".main").append('<div id="demosection"></div>');
-        $("#demosection").append('<h1>Täwis-Demos</h1><hr>');
+        $("#demosection").append('<h1>Twäwis-Demos</h1><hr>');
 
         for(var i = 0; i < gametitle.length; i++){
             $("#demosection").append(
