@@ -26,12 +26,6 @@ nav {
 
 .menuitem {
     text-align: center;
-    transition: 0.6s;
-}
-
-.menuitem:hover {
-    transform: scale(1.05);
-    transition: 0.2s;
 }
 
 body {
