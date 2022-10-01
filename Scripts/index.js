@@ -1,9 +1,72 @@
 $(document).ready(function () {
-    $(".gamesection").hover(function(){
-        $(this).children().css("transition", "0.5s");
-        $(this).children().css("transform", "scale(1.1)");
-    }, function(){
-        $(this).children().css("transition", "1s");
-        $(this).children().css("transform", "scale(1)");
-    });
+
+    var gametitle = new Array;
+    var gameinfo = new Array;
+
+    $.getJSON("../Datas/gameslist.json", function (data) {
+        for (i = 0; i < data.games.length; i++) {
+            gametitle[i] = data.games[i].gametitle;
+            gameinfo[i] = data.games[i].gameinfo;
+        }
+        buildSections();
+    })
+
+    function buildSections(){
+        buildGameSection();
+        buildDemoSection();
+        giveHover();
+    }
+
+    function buildGameSection(){
+        $(".main").append('<div id="gamesection"></div>');
+        $("#gamesection").append('<h1>Täwis-Games</h1><hr>');
+        $("#gamesection").append('<section id="section1" class="row">');
+
+        var section = 1;
+
+        for(var i = 0; i < gametitle.length; i++){
+            if(i % 3 == 0){
+                section++;
+                $("#gamesection").append('<section id="section' + section + '" class="row">');
+            }
+            $("#section" + section).append(
+                '<a class="col-sm gamesection" href="Views/' + gametitle[i] + '.html">'
+                    + '<img class="gameimg" src="Images/' + gametitle[i] + '.png" alt="' + gametitle[i] + '"/><hr>'
+                    + '<h3 class="gametitle">' + gametitle[i] + '</h3>'
+                    + '<p>' + gameinfo[i] + '</p>'
+                + '</a>'
+            );
+        }
+    }
+
+    function buildDemoSection(){
+        $(".main").append('<div id="demosection"></div>');
+        $("#demosection").append('<h1>Täwis-Demos</h1><hr>');
+
+        for(var i = 0; i < gametitle.length; i++){
+            $("#demosection").append(
+                '<section class="infosection jumbotron">'
+                    + '<div class="title">'
+                        + '<h1>' + gametitle[i].toUpperCase() + '</h1><hr>'
+                    + '</div>'
+                    + '<video width="650" height="500" controls>'
+                        + '<source src="Videos/' + gametitle[i] + '.mp4" type="video/mp4">'
+                        + '<source src="Videos/' + gametitle[i] + '.ogg" type="video/ogg">'
+                        + '<source src="Videos/' + gametitle[i] + '.webm" type="video/webm">'
+                        + 'Your browser does not support the video tag.'
+                    + '</video>'
+                + '</section>'
+            );
+        }
+    }
+
+    function giveHover(){
+        $(".gamesection").hover(function(){
+            $(this).children().css("transition", "0.5s");
+            $(this).children().css("transform", "scale(1.1)");
+        }, function(){
+            $(this).children().css("transition", "1s");
+            $(this).children().css("transform", "scale(1)");
+        });
+    }
 });

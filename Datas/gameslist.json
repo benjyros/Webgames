@@ -1,0 +1,20 @@
+{
+    "games": [
+        {
+            "gametitle": "TicTacToe",
+            "gameinfo": "Spiele TicTacToe mit deinem Freund."
+        },
+        {
+            "gametitle": "Hangman",
+            "gameinfo": "Errate Wörter - Hangman."
+        },
+        {
+            "gametitle": "Speedclicker",
+            "gameinfo": "Klicke so schnell wie du kannst."
+        },
+        {
+            "gametitle": "Reactionclicker",
+            "gameinfo": "Teste deine Reflexe."
+        }
+    ]
+}
