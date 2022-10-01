@@ -95,4 +95,16 @@
         width: 300px;
         height: 300px;
     }
+
+    .gameText {
+        font-size: 25px;
+    }
+    
+    .gameUnderText {
+        font-size: smaller;
+    }
+
+    .images {
+        width: 40px;
+    }
 }
