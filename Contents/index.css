@@ -1,6 +1,39 @@
+.homepage {
+    margin-bottom: 5%;
+}
+
 .infosection {
     background-color: #ffe0e9;
     padding: 5%;
     text-align: center;
     color: #464646;
+}
+
+.gamesection {
+    background-color: #ffe0e9;
+    color: #464646;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.notActive {
+    background-color: #fff5f8;
+}
+
+.button {
+    font-size: 17px;
+    width: 120px;
+    cursor: pointer;
+    background-color: #eb8faf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: 1s;
+}
+
+.button:hover {
+    background-color: rgb(197, 123, 149);
+    transition: 0.5s;
 }
