@@ -4,9 +4,9 @@ $(document).ready(function () {
     var gameinfo = new Array;
 
     $.getJSON("../Datas/gameslist.json", function (data) {
-        for (i = 0; i < data.games.length; i++) {
-            gametitle[i] = data.games[i].gametitle;
-            gameinfo[i] = data.games[i].gameinfo;
+        for (i = 0; i < data.gameslist.length; i++) {
+            gametitle[i] = data.gameslist[i].gametitle;
+            gameinfo[i] = data.gameslist[i].gameinfo;
         }
         buildSections();
     })
