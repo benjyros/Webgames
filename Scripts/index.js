@@ -24,8 +24,8 @@ $(document).ready(function () {
 
         for(var i = 0; i < gametitle.length; i++){
             $("#section").append(
-                '<a class="col-sm gamesection" href="Views/' + gametitle[i] + '.html">'
-                    + '<img class="gameimg" src="Images/' + gametitle[i] + '.png" alt="' + gametitle[i] + '"/><hr>'
+                '<a class="col-sm gamesection" href="Views/' + gametitle[i].toLowerCase() + '.html">'
+                    + '<img class="gameimg" src="Images/' + gametitle[i].toLowerCase() + '.png" alt="' + gametitle[i] + '"/><hr>'
                     + '<h3 class="gametitle">' + gametitle[i] + '</h3>'
                     + '<p>' + gameinfo[i] + '</p>'
                 + '</a>'
@@ -44,9 +44,9 @@ $(document).ready(function () {
                         + '<h1>' + gametitle[i].toUpperCase() + '</h1><hr>'
                     + '</div>'
                     + '<video width="650" height="500" controls>'
-                        + '<source src="Videos/' + gametitle[i] + '.mp4" type="video/mp4">'
-                        + '<source src="Videos/' + gametitle[i] + '.ogg" type="video/ogg">'
-                        + '<source src="Videos/' + gametitle[i] + '.webm" type="video/webm">'
+                        + '<source src="Videos/' + gametitle[i].toLowerCase() + '.mp4" type="video/mp4">'
+                        + '<source src="Videos/' + gametitle[i].toLowerCase() + '.ogg" type="video/ogg">'
+                        + '<source src="Videos/' + gametitle[i].toLowerCase() + '.webm" type="video/webm">'
                         + 'Your browser does not support the video tag.'
                     + '</video>'
                 + '</section>'
