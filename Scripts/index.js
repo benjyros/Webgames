@@ -3,7 +3,7 @@ $(document).ready(function () {
     var gametitle = new Array;
     var gameinfo = new Array;
 
-    $.getJSON("../Datas/gameslist.json", function (data) {
+    $.getJSON("Datas/gameslist.json", function (data) {
         for (i = 0; i < data.gameslist.length; i++) {
             gametitle[i] = data.gameslist[i].gametitle;
             gameinfo[i] = data.gameslist[i].gameinfo;
