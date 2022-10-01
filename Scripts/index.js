@@ -20,16 +20,10 @@ $(document).ready(function () {
     function buildGameSection(){
         $(".main").append('<div id="gamesection"></div>');
         $("#gamesection").append('<h1>Täwis-Games</h1><hr>');
-        $("#gamesection").append('<section id="section1" class="row">');
-
-        var section = 1;
+        $("#gamesection").append('<section id="section" class="row">');
 
         for(var i = 0; i < gametitle.length; i++){
-            if(i % 3 == 0){
-                section++;
-                $("#gamesection").append('<section id="section' + section + '" class="row">');
-            }
-            $("#section" + section).append(
+            $("#section").append(
                 '<a class="col-sm gamesection" href="Views/' + gametitle[i] + '.html">'
                     + '<img class="gameimg" src="Images/' + gametitle[i] + '.png" alt="' + gametitle[i] + '"/><hr>'
                     + '<h3 class="gametitle">' + gametitle[i] + '</h3>'
