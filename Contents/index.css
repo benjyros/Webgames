@@ -12,28 +12,40 @@
 .gamesection {
     background-color: #ffe0e9;
     color: #464646;
+    text-align: center;
     border-radius: 10px;
     margin: 10px;
-    padding: 10px;
+    padding: 50px;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.gamesection:hover {
+    text-decoration: none;
+    color: #464646;
+    background-color: #eb8faf;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.gamesection:visited {
+    text-decoration: none;
+    color: #464646;
+}
+
+.gameimg {
+    width: 75px;
+}
+
+.gametitle{
+    margin: 20px;
 }
 
 .notActive {
     background-color: #fff5f8;
 }
 
-.button {
-    font-size: 17px;
-    width: 120px;
-    cursor: pointer;
-    background-color: #eb8faf;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: 1s;
-}
-
-.button:hover {
-    background-color: rgb(197, 123, 149);
-    transition: 0.5s;
+.notActive:hover {
+    background-color: #fff5f8;
+    cursor: default;
 }
