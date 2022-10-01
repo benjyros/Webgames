@@ -41,6 +41,11 @@ table img {
     transition: 1s;
 }
 
+.button:hover {
+    background-color: #ffe0e9;
+    transition: 0.5s;
+}
+
 #feedback {
     margin-top: 50px;
     font-size: 34px;
