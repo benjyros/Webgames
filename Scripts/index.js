@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     function buildGameSection(){
         $(".main").append('<div id="gamesection"></div>');
-        $("#gamesection").append('<h1>Twäwis-Games</h1><hr>');
+        $("#gamesection").append('<h1 class="sectiontitle">Twäwis-Games</h1><hr>');
         $("#gamesection").append('<section id="section" class="row">');
 
         for(var i = 0; i < gametitle.length; i++){
@@ -35,15 +35,15 @@ $(document).ready(function () {
 
     function buildDemoSection(){
         $(".main").append('<div id="demosection"></div>');
-        $("#demosection").append('<h1>Twäwis-Demos</h1><hr>');
+        $("#demosection").append('<h1 class="sectiontitle">Twäwis-Demos</h1><hr>');
 
         for(var i = 0; i < gametitle.length; i++){
             $("#demosection").append(
                 '<section class="infosection jumbotron">'
                     + '<div class="title">'
-                        + '<h1>' + gametitle[i].toUpperCase() + '</h1><hr>'
+                        + '<h1 class="demotitle">' + gametitle[i].toUpperCase() + '</h1><hr>'
                     + '</div>'
-                    + '<video width="650" height="500" controls>'
+                    + '<video class="video" width="650" height="500" controls>'
                         + '<source src="Videos/' + gametitle[i].toLowerCase() + '.mp4" type="video/mp4">'
                         + '<source src="Videos/' + gametitle[i].toLowerCase() + '.ogg" type="video/ogg">'
                         + '<source src="Videos/' + gametitle[i].toLowerCase() + '.webm" type="video/webm">'

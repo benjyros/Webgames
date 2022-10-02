@@ -41,11 +41,26 @@
     margin: 20px;
 }
 
-.notActive {
-    background-color: #fff5f8;
-}
+@media screen and (max-width: 615px) { 
+    .gameimg {
+        width: 50px;
+    }
 
-.notActive:hover {
-    background-color: #fff5f8;
-    cursor: default;
+    .gametitle {
+        font-size: 25px;
+        margin: 10px;
+    }
+
+    .sectiontitle {
+        font-size: 30px;
+    }
+
+    .demotitle {
+        font-size: 25px;
+    }
+    
+    .video {
+        width: 320px;
+        height: 240px;
+    }
 }
